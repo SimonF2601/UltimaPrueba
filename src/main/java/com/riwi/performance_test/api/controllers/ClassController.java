@@ -19,6 +19,7 @@ import com.riwi.performance_test.api.dtos.response.ClassResponse;
 import com.riwi.performance_test.infraestructure.abstract_services.IClassService;
 import com.riwi.performance_test.utils.enums.SortType;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -27,7 +28,7 @@ import lombok.AllArgsConstructor;
 public class ClassController {
 
     private final IClassService service;
-    
+    @Operation(summary = "Create a new class", description = "The body of the ClassRequest in Json format is needed for the operation of creating a new class. ")
     @PostMapping
     public ResponseEntity<ClassResponse> insert(
         @Validated @RequestBody ClassRequest request
@@ -35,11 +36,13 @@ public class ClassController {
         return  ResponseEntity.ok(this.service.create(request));
     }
 
+    @Operation(summary = "Search a class by Id", description = "The id of the class to be searched for is needed to perform the search for it ")
     @GetMapping(path = "/{id}")
     public ResponseEntity<ClassResponse> get(@PathVariable Long id) {
         return ResponseEntity.ok(this.service.get(id));
     }
     
+    @Operation(summary = "Get all Classes", description = "Brings all currently active classes")
     @GetMapping
     public ResponseEntity<Page<ClassResponse>> getAll(
         @RequestParam(defaultValue = "1") int page,
