@@ -43,7 +43,6 @@ public class LessonEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "class_id", referencedColumnName = "id")
-    @Column(nullable = false)
     private ClassEntity classId;
 
     @EqualsAndHashCode.Exclude

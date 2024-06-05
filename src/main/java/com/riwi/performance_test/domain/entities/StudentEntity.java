@@ -38,7 +38,6 @@ public class StudentEntity {
 
     @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "class_id", referencedColumnName = "id")
-    @Column(nullable = false)
     private ClassEntity classId;
 
     
