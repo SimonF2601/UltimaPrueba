@@ -17,6 +17,7 @@ public class ClassMapper {
             .id(entity.getId())
             .name(entity.getName())
             .description(entity.getDescription())
+            .createdAt(entity.getCreatedAt())
             .active(entity.isActive())
             .build();
     }
