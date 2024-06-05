@@ -5,10 +5,14 @@ import org.springframework.data.domain.Page;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.riwi.performance_test.api.dtos.request.ClassRequest;
 import com.riwi.performance_test.api.dtos.response.ClassResponse;
+import com.riwi.performance_test.api.dtos.response.LessonResponse;
 import com.riwi.performance_test.domain.entities.ClassEntity;
 import com.riwi.performance_test.domain.repositories.ClassRepository;
 import com.riwi.performance_test.infraestructure.abstract_services.IClassService;
@@ -16,6 +20,7 @@ import com.riwi.performance_test.infraestructure.helpers.ServiceHelper;
 import com.riwi.performance_test.infraestructure.helpers.mappers.ClassMapper;
 import com.riwi.performance_test.utils.enums.SortType;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 
 @Service
@@ -41,7 +46,7 @@ public class ClassService implements IClassService{
     }
 
     @Override
-    public ClassResponse update(ClassRequest request, Long id) {
+    public ClassResponse update(Long id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'update'");
     }

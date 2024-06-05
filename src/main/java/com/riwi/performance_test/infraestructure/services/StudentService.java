@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.riwi.performance_test.api.dtos.request.StudentRequest;
 import com.riwi.performance_test.api.dtos.response.StudentResponse;
+import com.riwi.performance_test.domain.entities.LessonEntity;
 import com.riwi.performance_test.domain.entities.StudentEntity;
 import com.riwi.performance_test.domain.repositories.StudentRepository;
 import com.riwi.performance_test.infraestructure.abstract_services.IStudentService;
@@ -40,12 +41,11 @@ public class StudentService implements IStudentService {
     }
 
     @Override
-    public StudentResponse update(StudentRequest request, Long id) {
-        StudentEntity student = this.serviceHelper.find(id, studentRepository, "student");
+    public StudentResponse update(Long id) {
+       StudentEntity student = this.serviceHelper.find(id, studentRepository, "student");
 
-        student = this.studentMapper.requestToEntity(request);
-        student.setId(id);
- 
+       student.setActive(false);
+
         return this.studentMapper.entityToResponse(this.studentRepository.save(student));
     }
 
