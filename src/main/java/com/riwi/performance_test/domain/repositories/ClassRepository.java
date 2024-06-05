@@ -7,5 +7,5 @@ import com.riwi.performance_test.domain.entities.ClassEntity;
 
 @Repository
 public interface ClassRepository extends JpaRepository<ClassEntity,Long> {
-
+    
 }
