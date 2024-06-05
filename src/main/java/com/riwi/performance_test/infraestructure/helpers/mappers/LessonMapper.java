@@ -6,15 +6,13 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.riwi.performance_test.api.dtos.request.ClassRequest;
 import com.riwi.performance_test.api.dtos.request.LessonRequest;
 import com.riwi.performance_test.api.dtos.response.LessonResponse;
 import com.riwi.performance_test.api.dtos.response.LessonWithMediaResponse;
 import com.riwi.performance_test.api.dtos.response.MultimediaResponse;
-import com.riwi.performance_test.domain.entities.ClassEntity;
 import com.riwi.performance_test.domain.entities.LessonEntity;
 import com.riwi.performance_test.domain.repositories.ClassRepository;
-import com.riwi.performance_test.domain.repositories.MultimediaRepository;
+
 import com.riwi.performance_test.infraestructure.helpers.ServiceHelper;
 
 import lombok.AllArgsConstructor;
@@ -38,6 +36,7 @@ public class LessonMapper {
             .title(entity.getTitle())
             .content(entity.getContent())
             .active(entity.isActive())
+            //TODO agregar id Class
             .build();
     }
 

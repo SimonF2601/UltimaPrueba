@@ -1,6 +1,5 @@
 package com.riwi.performance_test.api.dtos.request;
 
-import com.riwi.performance_test.domain.entities.ClassEntity;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;

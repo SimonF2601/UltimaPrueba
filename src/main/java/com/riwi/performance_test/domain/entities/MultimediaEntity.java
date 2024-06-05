@@ -40,7 +40,6 @@ public class MultimediaEntity {
 
     @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "lesson_id", referencedColumnName = "id")
-    @Column(nullable = false)
     private LessonEntity lesson;
 
 
