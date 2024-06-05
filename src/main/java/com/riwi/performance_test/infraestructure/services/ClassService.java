@@ -8,17 +8,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.riwi.performance_test.api.dtos.request.ClassRequest;
-import com.riwi.performance_test.api.dtos.request.StudentRequest;
 import com.riwi.performance_test.api.dtos.response.ClassResponse;
-import com.riwi.performance_test.api.dtos.response.StudentResponse;
 import com.riwi.performance_test.domain.entities.ClassEntity;
-import com.riwi.performance_test.domain.entities.StudentEntity;
 import com.riwi.performance_test.domain.repositories.ClassRepository;
-import com.riwi.performance_test.domain.repositories.StudentRepository;
 import com.riwi.performance_test.infraestructure.abstract_services.IClassService;
 import com.riwi.performance_test.infraestructure.helpers.ServiceHelper;
 import com.riwi.performance_test.infraestructure.helpers.mappers.ClassMapper;
-import com.riwi.performance_test.infraestructure.helpers.mappers.StudentMapper;
 import com.riwi.performance_test.utils.enums.SortType;
 
 import lombok.AllArgsConstructor;
@@ -26,9 +21,6 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class ClassService implements IClassService{
-
-
-    private final IClassService service;
 
     @Autowired
     private final ClassMapper classMapper;
@@ -62,7 +54,19 @@ public class ClassService implements IClassService{
 
     @Override
     public Page<ClassResponse> getAll(int page, int size, SortType sort) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAll'");
+        if (page <0) page = 0;
+
+        PageRequest pagination = null;
+
+        switch (sort) {
+            case NONE -> pagination = PageRequest.of(page, size);
+    
+            case ASC -> pagination = PageRequest.of(page, size, Sort.by(FIELD_BY_SORT).ascending());
+            
+            case DESC -> pagination = PageRequest.of(page, size, Sort.by(FIELD_BY_SORT).descending());  
+        }
+
+        return this.classRepository.findAll(pagination)
+                .map(objClass -> this.classMapper.entityToResponse(objClass));
     }
 }
