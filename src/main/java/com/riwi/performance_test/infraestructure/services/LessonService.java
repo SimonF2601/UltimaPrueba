@@ -33,8 +33,7 @@ public class LessonService implements ILessonService {
 
     @Override
     public LessonResponse get(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'get'");
+        return this.lessonMapper.entityToResponse(this.serviceHelper.find(id, lessonRepository, "class"));
     }
 
     @Override
