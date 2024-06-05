@@ -3,6 +3,7 @@ package com.riwi.performance_test.api.controllers;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,6 +37,13 @@ public class LessonController {
     @GetMapping(path = "/{id}/multimedia")
     public ResponseEntity<LessonResponse> get(@PathVariable Long id) {
         return ResponseEntity.ok(this.service.get(id));
+    }
+
+    @Operation(summary = "Disable a specific lesson.", description = "You must enter the id of the specific lesson you wish to disable.")
+    @PatchMapping(path = "/{id}/disable")
+    public ResponseEntity<LessonResponse> disable(
+        @PathVariable Long id) {
+    return ResponseEntity.ok(this.service.update(id));
     }
 
 }
