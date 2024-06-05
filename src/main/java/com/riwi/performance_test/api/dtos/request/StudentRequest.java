@@ -22,7 +22,7 @@ public class StudentRequest {
     @NotBlank (message =  "Email is required")
     @Email (message = "The input is not an e-mail")
     private String email;
-    @NotBlank(message = "The Lesson must have an active status")
+    @NotNull(message = "The Lesson must have an active status")
     private boolean active;
     @NotNull(message = "The Class id cannot be empty")
     @Min(value = 1, message = "Id must be greater than zero")

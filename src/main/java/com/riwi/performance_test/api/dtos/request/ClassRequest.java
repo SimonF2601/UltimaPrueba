@@ -1,6 +1,7 @@
 package com.riwi.performance_test.api.dtos.request;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,6 +18,6 @@ public class ClassRequest {
     private String name;
     @NotBlank(message = "The Class have to a descripcion")
     private String description;
-    @NotBlank(message = "The Class must have an active status")
+    @NotNull(message = "The Class must have an active status")
     private boolean active;
 }
