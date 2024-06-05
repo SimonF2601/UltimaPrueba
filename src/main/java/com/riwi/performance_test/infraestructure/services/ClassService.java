@@ -2,6 +2,7 @@ package com.riwi.performance_test.infraestructure.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ClassService implements IClassService{
 
+
     private final IClassService service;
 
     @Autowired
@@ -43,8 +45,7 @@ public class ClassService implements IClassService{
 
     @Override
     public ClassResponse get(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'get'");
+        return this.classMapper.entityToResponse(this.serviceHelper.find(id, classRepository, "class"));
     }
 
     @Override
