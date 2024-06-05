@@ -22,7 +22,7 @@ import com.riwi.performance_test.utils.enums.SortType;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping(path =  "/students")
+@RequestMapping(path = "/students")
 @AllArgsConstructor
 public class StudentController {
     

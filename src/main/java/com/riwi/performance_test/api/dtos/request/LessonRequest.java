@@ -21,7 +21,7 @@ public class LessonRequest {
     private String title;
     @NotBlank(message = "The Lesson must have a content")
     private String content;
-    @NotBlank(message = "The Lesson must have an active status")
+    @NotNull(message = "The Lesson must have an active status")
     private boolean active;
     @NotNull(message = "The Class id cannot be empty")
     @Min(value = 1, message = "Id must be greater than zero")

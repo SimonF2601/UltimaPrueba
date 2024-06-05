@@ -22,7 +22,7 @@ public class MultimediaRequest {
     private String type;
     @NotBlank(message = "The URL cannot be null")
     private String url;
-    @NotBlank(message = "The Multimedia must have an active status")
+    @NotNull(message = "The Multimedia must have an active status")
     private boolean active;
     @NotNull(message = "The Lesson id cannot be empty")
     @Min(value = 1, message = "Id must be greater than zero")
